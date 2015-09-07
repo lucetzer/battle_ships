@@ -1,14 +1,20 @@
 class Ship
 
-  def place_ship
+  attr_reader :position
+
+  def initialize(position)
+    @position = position
   end
 
-  def size(type)
-    @size = type
-  end
+  # def place_ship
+  # end
 
-  def direction(orientation)
-    @direction = orientation
-  end
+  # def size(type)
+  #   @size = type
+  # end
+
+  # def direction(orientation)
+  #   @direction = orientation
+  # end
 
 end
