@@ -12,20 +12,46 @@ describe Board do
     expect(subject.ship_array).to include(ship1)
   end
 
-  it 'can expect method receive_hit' do
-    is_expected.to respond_to :receive_hit?
-  end
+  # it 'can expect method receive_hit' do
+  #   is_expected.to respond_to :receive_hit
+  # end
 
-  it 'can actually receive hits' do
+  # it 'can actually receive hits' do
+  #   ship = Ship.new('A1')
+  #   subject.ship_array << ship
+  #   subject.fire("A1")
+  #   expect(ship.damage).to be_true
+  # end
+
+  # it 'can actually receive Missed' do
+  #   ship = Ship.new('A1')
+  #   subject.ship_array << ship
+  #   subject.fire("A2")
+  #   expect(subject.receive_hit).to be_falsey
+  # end
+
+  it 'Reports missed when no ship in position targetted' do
     ship = Ship.new('A1')
     subject.ship_array << ship
-    expect(subject.receive_hit? "A1").to be_truthy
+    expect(subject.fire("A2")).to eq("Missed")
   end
 
-  it 'can receive misses' do
+  it 'Reports Hit when ship in position targetted' do
     ship = Ship.new('A1')
     subject.ship_array << ship
-    expect(subject.receive_hit? "B2").to be_falsey
+    expect(subject.fire("A1")).to eq("Hit")
   end
 
+  it 'Updates damage on the ship when hit' do
+    ship = Ship.new('A1')
+    subject.ship_array << ship
+    subject.fire('A1')
+    expect(ship.damage).to eq(1)
+  end
+
+  it 'Reports that not all ships are sunk' do
+    ship = Ship.new('A1')
+    subject.ship_array << ship
+    expect(subject.status).to eq("Still in the game")
+  end
 end
