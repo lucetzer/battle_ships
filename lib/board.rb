@@ -1,18 +1,18 @@
 require '~/Projects/battle_ships/lib/ship.rb'
 class Board
 
-  attr_reader :board_array
+  attr_reader :ship_array
 
   def initialize
-    @board_array = []
+    @ship_array = []
   end
 
   def receive_ship(ship)
-    board_array << ship.position
+    ship_array << ship
   end
 
-  def receive_hit(hit)
-    board_array.include?(hit)
+  def receive_hit?(hit)
+    ship_array.one? { |ship| ship.position == hit }
   end
 
   # def create_board

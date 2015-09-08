@@ -9,21 +9,23 @@ describe Board do
   it 'should have an instance of ship on board' do
     ship1 = Ship.new "A1"
     subject.receive_ship(ship1)
-    expect(subject.board_array).to include(ship1.position)
+    expect(subject.ship_array).to include(ship1)
   end
 
   it 'can expect method receive_hit' do
-    is_expected.to respond_to :receive_hit
+    is_expected.to respond_to :receive_hit?
   end
 
   it 'can actually receive hits' do
-    subject.board_array << "A1"
-    expect(subject.receive_hit "A1").to be_truthy
+    ship = Ship.new('A1')
+    subject.ship_array << ship
+    expect(subject.receive_hit? "A1").to be_truthy
   end
 
   it 'can receive misses' do
-    subject.board_array << "A1"
-    expect(subject.receive_hit "B2").to be_falsey
+    ship = Ship.new('A1')
+    subject.ship_array << ship
+    expect(subject.receive_hit? "B2").to be_falsey
   end
 
 end
