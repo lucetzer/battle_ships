@@ -1,4 +1,4 @@
-require '~/Projects/battle_ships/lib/board.rb'
+require_relative 'board'
 
 class Player
 
