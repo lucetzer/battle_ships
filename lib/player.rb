@@ -17,7 +17,6 @@ class Player
     board.receive_hit
   end
 
-
 end
 
 p = Player.new

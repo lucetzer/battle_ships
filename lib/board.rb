@@ -19,10 +19,12 @@ class Board
 
   def receive_hit
     ship_array.each do |ship|
-      if ship.position == @shot[0]
+      if ship.position == shot[0]
         ship.hit
+        shot.clear
         return "Hit"
       else
+        shot.clear
         return "Missed"
       end
     end
