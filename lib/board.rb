@@ -13,11 +13,11 @@ class Board
     ship_array << ship
   end
 
-  def fire(co)
-    @fire = co
-    receive_hit
-    report_hit
-  end
+  # def fire(co)
+  #   @fire = co
+  #   receive_hit
+  #   report_hit
+  # end
 
   def status
     sunk? ? "Game Over" : "Still in the game"
