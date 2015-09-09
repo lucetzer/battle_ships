@@ -1,4 +1,5 @@
-require '~/Projects/battle_ships/lib/ship.rb'
+require_relative 'ship'
+# require '~/Projects/battle_ships/lib/ship.rb'
 class Board
 
   attr_reader :ship_array
