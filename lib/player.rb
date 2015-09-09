@@ -11,4 +11,10 @@ class Player
   def place(ship)
     board.receive_ship(ship)
   end
+
+  def fire(co)
+    board.shot << co
+  end
+  
+
 end

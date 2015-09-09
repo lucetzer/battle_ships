@@ -2,10 +2,11 @@ require_relative 'ship'
 # require '~/Projects/battle_ships/lib/ship.rb'
 class Board
 
-  attr_reader :ship_array
+  attr_reader :ship_array, :shot
 
   def initialize
     @ship_array = []
+    @shot = []
   end
 
   def receive_ship(ship)
