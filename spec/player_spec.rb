@@ -15,5 +15,9 @@ describe Player do
     expect(subject.fire("A1")).to eq(subject.board.shot)
   end
 
-
+  it 'tells board to receive hit' do
+    ship = Ship.new "A1"
+    subject.place ship
+    expect(subject.fire("A1")).to eq("Hit")
+  end
 end

@@ -12,28 +12,34 @@ describe Board do
     expect(subject.ship_array).to include(ship1)
   end
 
-  it "receives a shot from a player" do
-    player = Player.new
-    player.fire("A1")
-    expect(subject.receive_shot).to
-  end
+  # it "receives a shot from a player" do
+  #   player = Player.new
+  #   player.fire("A1")
+  #   expect(subject.receive_shot).to
+  # end
 
   it 'Reports missed when no ship in position targetted' do
     ship = Ship.new('A1')
-    subject.ship_array << ship
-    expect(subject.fire("A2")).to eq("Missed")
+    p1 = Player.new
+    p1.board.ship_array << ship
+    p1.fire("A2")
+    expect(p1.board.receive_hit).to eq("Missed")
   end
 
   it 'Reports Hit when ship in position targetted' do
     ship = Ship.new('A1')
-    subject.ship_array << ship
-    expect(subject.fire("A1")).to eq("Hit")
+    p1 = Player.new
+    p1.board.ship_array << ship
+    p1.fire("A1")
+    expect(p1.board.receive_hit).to eq("Hit")
   end
 
   it 'Updates damage on the ship when hit' do
     ship = Ship.new('A1')
-    subject.ship_array << ship
-    subject.fire('A1')
+    p1 = Player.new
+    p1.board.ship_array << ship
+    p1.fire('A1')
+    p1.board.receive_hit
     expect(ship.damage).to eq(1)
   end
 

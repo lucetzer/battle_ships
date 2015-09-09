@@ -14,7 +14,14 @@ class Player
 
   def fire(co)
     board.shot << co
+    board.receive_hit
   end
-  
+
 
 end
+
+p = Player.new
+ship = Ship.new "A1"
+
+p.place ship
+p.fire "A1"
