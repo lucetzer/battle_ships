@@ -9,8 +9,8 @@ class Ship
     @co = co
     @position = []
     @direction = direction
-    @damage = 0
     @size = size
+    @damage = 0
     self.convert(co)
   end
 
@@ -37,12 +37,14 @@ class Ship
     number < 1 || number > 10
   end
 
-  def hit
+  def hit(co)
+    position.delete(co)
     @damage += 1
   end
 
   def sunk
-    "Your ship is sunk" if self.size == self.damage
+    "Your ship is sunk" if position.empty?
+    # "Your ship is sunk" if self.size == self.damage
   end
 
 end

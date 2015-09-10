@@ -12,21 +12,16 @@ describe Ship do
       ship = Ship.new('A1', :S, 1)
       expect(ship.damage).to eq(0)
     end
-    it 'Will count hits when recieved' do
-      ship = Ship.new('A1', :S, 1)
-      ship.hit
-      expect(ship.damage).to eq(1)
-    end
 
     it 'Updates damage on the ship when hit' do
       ship = Ship.new('A1', :S, 1)
-      ship.hit
+      ship.hit('A1')
       expect(ship.damage).to eq(1)
     end
 
     it "can be sunk" do
       ship = Ship.new('A1', :S, 1)
-      ship.hit
+      ship.hit('A1')
       expect(ship.sunk).to eq("Your ship is sunk")
     end
 
