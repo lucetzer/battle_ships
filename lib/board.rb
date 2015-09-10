@@ -12,7 +12,13 @@ class Board
   end
 
   def receive_ship(ship)
+    overlapping?(ship)
     ship_array << ship
+  end
+
+  def overlapping?(ship)
+    fail "There's already a ship there, pick another position" if
+    (ship_array.any? {|existing_ship| existing_ship.position == ship.position})
   end
 
   def status

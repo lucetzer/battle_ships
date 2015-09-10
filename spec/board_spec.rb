@@ -28,4 +28,11 @@ describe Board do
     subject.ship_array << ship
     expect(subject.status).to eq("Still in the game")
   end
+
+  it 'Raises error if ships overlap' do
+    subject.receive_ship(ship)
+    expect{subject.receive_ship(ship)}.to raise_error
+    "There's already a ship there, pick another position"
+  end
+
 end

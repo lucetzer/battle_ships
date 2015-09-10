@@ -42,4 +42,9 @@ describe Ship do
     expect(ship.position).to eq (['D5', 'D6', 'D7'])
   end
 
+  it 'Raises error if ship is out of bounds' do
+    expect{Ship.new("A1", :W, 3)}.to raise_error
+    "Out of bounds, pick another direction"
+  end
+
 end
