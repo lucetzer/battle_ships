@@ -4,7 +4,7 @@ describe Ship do
 
   it 'has a position when created' do
     ship = Ship.new('A1', :S, 1)
-    expect(ship.position).to eq('A1')
+    expect(ship.position).to eq(['A1'])
   end
 
   describe "#hits" do
@@ -34,8 +34,12 @@ describe Ship do
 
   it "converts ship position and direction to coordinates" do
     ship = Ship.new('A1', :S, 2)
-    ship.convert
-    expect(ship.position).to eq ([A1, A2])
+    expect(ship.position).to eq (['A1', 'A2'])
+  end
+
+  it "converts ship position and direction to coordinates" do
+    ship = Ship.new('D5', :S, 3)
+    expect(ship.position).to eq (['D5', 'D6', 'D7'])
   end
 
 end
