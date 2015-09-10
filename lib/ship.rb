@@ -44,7 +44,6 @@ class Ship
 
   def sunk
     "Your ship is sunk" if position.empty?
-    # "Your ship is sunk" if self.size == self.damage
   end
 
 end

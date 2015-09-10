@@ -26,9 +26,3 @@ class Player
   end
 
 end
-#
-# p = Player.new
-# ship = Ship.new "A1"
-#
-# p.place ship
-# p.fire "A1"

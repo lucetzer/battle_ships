@@ -2,7 +2,7 @@ require 'board.rb'
 
 describe Board do
 
-  let(:ship) {double :ship, position: "A1", direction: :S, size: 1, hit: 0}
+  let(:ship) {double :ship, position: ["A1"], direction: :S, size: 1, hit: 0}
 
   it { is_expected.to respond_to(:receive_ship).with(1).argument }
 
@@ -33,6 +33,20 @@ describe Board do
     subject.receive_ship(ship)
     expect{subject.receive_ship(ship)}.to raise_error
     "There's already a ship there, pick another position"
+  end
+
+  it "Adds to misses when shot missed" do
+    subject.receive_ship(ship)
+    subject.shot << 'B1'
+    subject.receive_hit
+    expect(subject.misses.length).to eq(1)
+  end
+
+  it "Adds to misses when shot missed" do
+    subject.receive_ship(ship)
+    subject.shot << 'A1'
+    subject.receive_hit
+    expect(subject.hits.length).to eq(1)
   end
 
 end

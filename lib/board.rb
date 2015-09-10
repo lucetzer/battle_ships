@@ -27,7 +27,7 @@ class Board
 
   def receive_hit
     ship_array.each do |ship|
-      if ship.position == shot[0]
+      if ship.position.include?(shot[0])
         ship.hit
         hits << shot[0]
         shot.clear
