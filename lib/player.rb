@@ -21,10 +21,14 @@ class Player
     board.misses
   end
 
+  def hits
+    board.hits
+  end
+
 end
-
-p = Player.new
-ship = Ship.new "A1"
-
-p.place ship
-p.fire "A1"
+#
+# p = Player.new
+# ship = Ship.new "A1"
+#
+# p.place ship
+# p.fire "A1"

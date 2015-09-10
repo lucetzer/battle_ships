@@ -2,11 +2,18 @@ class Ship
 
   attr_reader :position, :damage, :size
 
-  def initialize(position, size = 1)
-    @position = position
+  def initialize(position, direction, size)
+    @position = []
+    @direction = direction
     @damage = 0
     @size = size
   end
+
+  def convert
+    
+  end
+
+
 
   def hit
     @damage += 1

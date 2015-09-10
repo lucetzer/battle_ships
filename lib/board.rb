@@ -23,9 +23,11 @@ class Board
     ship_array.each do |ship|
       if ship.position == shot[0]
         ship.hit
+        hits << shot[0]
         shot.clear
         return "Hit"
       else
+        misses << shot[0]
         shot.clear
         return "Missed"
       end
