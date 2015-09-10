@@ -8,9 +8,9 @@ class Ship
   def initialize(name, co, direction, size)
     @name = name
     @co = co
-    @position = []
     @direction = direction
     @size = size
+    @position = []
     @damage = 0
     self.convert(co)
   end

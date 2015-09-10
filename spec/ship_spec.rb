@@ -18,13 +18,12 @@ describe Ship do
       ship.hit('A1')
       expect(ship.damage).to eq(1)
     end
+  end
 
-    it "can be sunk" do
-      ship = Ship.new('Patrol Boat', 'A1', :S, 1)
-      ship.hit('A1')
-      expect(ship.sunk).to eq("Your ship is sunk")
-    end
-
+  it "can be sunk" do
+    ship = Ship.new('Patrol Boat', 'A1', :S, 1)
+    ship.hit('A1')
+    expect(ship.sunk).to eq("Your ship is sunk")
   end
 
   it "converts ship position and direction to coordinates" do
