@@ -17,6 +17,10 @@ class Player
     board.receive_hit
   end
 
+  def misses
+    board.misses
+  end
+
 end
 
 p = Player.new

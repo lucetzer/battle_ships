@@ -2,9 +2,7 @@ require 'board.rb'
 
 describe Board do
 
-  it 'should respond to receive_ship' do
-    is_expected.to respond_to(:receive_ship).with(1).argument
-  end
+  it { is_expected.to respond_to(:receive_ship).with(1).argument }
 
   it 'should have an instance of ship on board' do
     ship1 = Ship.new "A1"
