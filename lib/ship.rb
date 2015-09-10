@@ -5,7 +5,8 @@ class Ship
 
   attr_reader :position, :damage, :size, :co, :direction
 
-  def initialize(co, direction, size)
+  def initialize(name, co, direction, size)
+    @name = name
     @co = co
     @position = []
     @direction = direction
