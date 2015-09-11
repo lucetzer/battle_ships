@@ -3,6 +3,7 @@ require 'board.rb'
 describe Board do
 
   let(:ship) {double :ship, position: ["A1"], direction: :S, size: 1, hit: 0}
+  let(:player) {double :player}
 
   it { is_expected.to respond_to(:receive_ship).with(1).argument }
 
@@ -11,17 +12,14 @@ describe Board do
     expect(subject.ship_array).to include(ship)
   end
 
-  it 'Reports missed when no ship in position targetted' do
-    p1 = Player.new
-    p1.board.ship_array << ship
-    p1.fire("A2")
-    expect(p1.board.receive_hit).to eq("Missed")
+  it 'Reports missed when ship is missed' do
+    subject.receive_ship(ship)
+    expect(subject.receive_hit("A2")).to eq("Missed")
   end
 
-  it 'Reports Hit when ship in position targetted' do
-    p1 = Player.new
-    p1.board.ship_array << ship
-    expect(p1.fire("A1")).to eq("Hit")
+  it 'Reports hit when ship in position has been hit' do
+    subject.receive_ship(ship)
+    expect(subject.receive_hit("A1")).to eq("Hit")
   end
 
   it 'Reports that not all ships are sunk' do
@@ -37,16 +35,14 @@ describe Board do
 
   it "Adds to misses when shot missed" do
     subject.receive_ship(ship)
-    subject.shot << 'B1'
-    subject.receive_hit
-    expect(subject.misses.length).to eq(1)
+    subject.receive_hit('B1')
+    expect(subject.misses).to eq ['B1']
   end
 
   it "Adds to misses when shot missed" do
     subject.receive_ship(ship)
-    subject.shot << 'A1'
-    subject.receive_hit
-    expect(subject.hits.length).to eq(1)
+    subject.receive_hit('A1')
+    expect(subject.hits).to eq ['A1']
   end
 
 end

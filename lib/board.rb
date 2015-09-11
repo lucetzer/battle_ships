@@ -1,40 +1,42 @@
 require_relative 'ship'
-# require '~/Projects/battle_ships/lib/ship.rb'
+
+
 class Board
 
-  attr_reader :ship_array, :shot, :misses, :hits
+  attr_reader :ship_array, :misses, :hits
 
   def initialize
     @ship_array = []
-    @shot = []
     @hits = []
     @misses = []
   end
 
   def receive_ship(ship)
-    overlapping?(ship)
+    ship_array.each do |position|
+      fail "There's already a ship there, pick another position" if
+      overlapping?(position, ship)
+    end
     ship_array << ship
   end
 
-  def overlapping?(ship)
-    fail "There's already a ship there, pick another position" if
-    (ship_array.any? {|existing_ship| existing_ship.position == ship.position})
+  def overlapping?(ship1, ship2)
+    (ship1.position & ship2.position).any?
+    # fail "There's already a ship there, pick another position" if
+    # (ship_array.any? {|existing_ship| existing_ship.position == ship.position})
+
   end
 
   def status
     sunk? ? "Game Over" : "Still in the game"
   end
 
-  def receive_hit
+  def receive_hit(co)
     ship_array.each do |ship|
-      if ship.position.include?(shot[0])
-        ship.hit
-        hits << shot[0]
-        shot.clear
+      if ship.position.include?(co)
+        hits << co
         return "Hit"
       else
-        misses << shot[0]
-        shot.clear
+        misses << co
         return "Missed"
       end
     end

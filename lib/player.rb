@@ -13,8 +13,8 @@ class Player
   end
 
   def fire(co)
-    board.shot << co
-    board.receive_hit
+    # board.shot << co
+    board.receive_hit(co)
   end
 
   def misses

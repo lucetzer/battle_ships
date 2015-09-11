@@ -7,18 +7,18 @@ describe Ship do
     expect(ship.position).to eq(['A1'])
   end
 
-  describe "#hits" do
-    it 'It is initialized with no hits' do
-      ship = Ship.new('Patrol Boat', 'A1', :S, 1)
-      expect(ship.damage).to eq(0)
-    end
-
-    it 'Updates damage on the ship when hit' do
-      ship = Ship.new('Patrol Boat', 'A1', :S, 1)
-      ship.hit('A1')
-      expect(ship.damage).to eq(1)
-    end
-  end
+  # describe "#hits" do
+  #   it 'It is initialized with no hits' do
+  #     ship = Ship.new('Patrol Boat', 'A1', :S, 1)
+  #     expect(ship.damage).to eq(0)
+  #   end
+  #
+  #   it 'Updates damage on the ship when hit' do
+  #     ship = Ship.new('Patrol Boat', 'A1', :S, 1)
+  #     ship.hit('A1')
+  #     expect(ship.damage).to eq(1)
+  #   end
+  # end
 
   it "can be sunk" do
     ship = Ship.new('Patrol Boat', 'A1', :S, 1)

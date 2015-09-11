@@ -1,5 +1,5 @@
-require_relative 'board'
-require_relative 'player'
+# require_relative 'board'
+# require_relative 'player'
 
 class Ship
 
@@ -11,7 +11,7 @@ class Ship
     @direction = direction
     @size = size
     @position = []
-    @damage = 0
+    # @damage = 0
     self.convert(co)
   end
 
@@ -40,7 +40,7 @@ class Ship
 
   def hit(co)
     position.delete(co)
-    @damage += 1
+    # @damage += 1
   end
 
   def sunk
