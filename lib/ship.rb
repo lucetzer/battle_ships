@@ -11,7 +11,6 @@ class Ship
     @direction = direction
     @size = size
     @position = []
-    # @damage = 0
     self.convert(co)
   end
 
@@ -40,7 +39,6 @@ class Ship
 
   def hit(co)
     position.delete(co)
-    # @damage += 1
   end
 
   def sunk

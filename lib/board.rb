@@ -21,9 +21,6 @@ class Board
 
   def overlapping?(ship1, ship2)
     (ship1.position & ship2.position).any?
-    # fail "There's already a ship there, pick another position" if
-    # (ship_array.any? {|existing_ship| existing_ship.position == ship.position})
-
   end
 
   def status
